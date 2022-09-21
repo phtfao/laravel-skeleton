@@ -1,7 +1,7 @@
 #!
 
 cp .env.example .env
-composer config --global --auth github-oauth.github.com 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
+echo "Jko6DrwVtV0qSP0R7zr4\"}}" >> /root/.config/composer/auth.json
 composer install
 chmod 777 storage -R
 cp -R vendor/phtfao/feegow/tests .
