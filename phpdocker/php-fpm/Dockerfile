@@ -1,0 +1,14 @@
+FROM phpdockerio/php:8.1-fpm
+WORKDIR "/feegow"
+
+RUN apt-get update; \
+    apt-get -y --no-install-recommends install \
+        php8.1-mysql zip; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN groupadd -g 1000 www-data
+RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
+
+RUN composer install
